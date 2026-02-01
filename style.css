@@ -75,5 +75,13 @@ h1, h2 {
 .card {
     padding: 30px;
     background: #111;
-    border: 1px solid #333;
+    border: 1px solid var(--border-color);
+    transition: 0.3s;
 }
+
+.card:hover {
+    border-color: var(--neon);
+    box-shadow: 0 0 15px var(--neon);
+    transform: translateY(-6px);
+}
+

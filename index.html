@@ -8,18 +8,36 @@
 </head>
 
 <body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-brand">KC.sys</div>
+        <div class="nav-links">
+            <a href="#boot">Boot</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
     <section id="boot" class="panel boot">
         <h1>ENGINEER PROFILE v1.0</h1>
         <p class="status typing">System Initializing...</p>
+        <div class="boot-icons">
+            <span class="icon">⚡</span>
+            <span class="icon">🔧</span>
+            <span class="icon">💻</span>
+        </div>
     </section>
 
     <section id="about" class="panel diagnostics">
         <h2>System Diagnostics</h2>
         <div class="metrics">
-            <div>Name: KC</div>
-            <div>Role: Engineering Student</div>
-            <div>Curiosity Level: 98%</div>
-            <div>Coffee Dependency: Critical</div>
+            <div><strong>Name:</strong> KC</div>
+            <div><strong>Role:</strong> Engineering Student</div>
+            <div><strong>Curiosity Level:</strong> 98%</div>
+            <div><strong>Coffee Dependency:</strong> Critical ☕</div>
+            <div><strong>Status:</strong> Online 🟢</div>
+            <div><strong>Mode:</strong> Learning 📚</div>
         </div>
     </section>
 
@@ -27,27 +45,44 @@
         <h2>Skills Matrix</h2>
 
         <div class="skill">
-            <span>HTML</span>
+            <span>HTML <span class="skill-percent">90%</span></span>
             <div class="bar html"></div>
         </div>
 
         <div class="skill">
-            <span>CSS</span>
+            <span>CSS <span class="skill-percent">85%</span></span>
             <div class="bar css"></div>
         </div>
 
         <div class="skill">
-            <span>Problem Solving</span>
+            <span>Problem Solving <span class="skill-percent">95%</span></span>
             <div class="bar problem"></div>
+        </div>
+
+        <div class="skill">
+            <span>JavaScript <span class="skill-percent">75%</span></span>
+            <div class="bar javascript"></div>
         </div>
     </section>
 
     <section id="projects" class="panel projects">
         <h2>Mission Database</h2>
         <div class="cards">
-            <div class="card">Mission 01</div>
-            <div class="card">Mission 02</div>
-            <div class="card">Mission 03</div>
+            <div class="card">
+                <h3>Mission 01</h3>
+                <p>Portfolio Website</p>
+                <span class="status-badge">Active</span>
+            </div>
+            <div class="card">
+                <h3>Mission 02</h3>
+                <p>Web App Development</p>
+                <span class="status-badge">In Progress</span>
+            </div>
+            <div class="card">
+                <h3>Mission 03</h3>
+                <p>API Integration</p>
+                <span class="status-badge">Planned</span>
+            </div>
         </div>
     </section>
 
@@ -55,7 +90,13 @@
         <h2>Transmission Terminal</h2>
         <p>> Initiate Contact Protocol</p>
         <p>Email: your@email.com</p>
+        <p>GitHub: github.com/yourprofile</p>
+        <p>LinkedIn: linkedin.com/in/yourprofile</p>
+        <div class="terminal-cursor">_</div>
     </section>
+
+    <!-- Back to top button -->
+    <a href="#boot" class="back-to-top">↑</a>
 
 </body>
 </html>

@@ -12,11 +12,107 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10%;
+    box-shadow: 0 2px 20px rgba(0, 247, 255, 0.1);
+}
+
+.nav-brand {
+    color: var(--neon);
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px var(--neon);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--neon);
+    box-shadow: 0 0 10px var(--neon);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--neon);
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus::after {
+    width: 100%;
+}
+
+.nav-links a:active {
+    color: var(--neon);
+    text-shadow: 0 0 10px var(--neon);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--neon);
+    box-shadow: 0 0 10px var(--neon);
+}
+
 body {
     font-family: "Courier New", monospace;
-    background-color: var(--bg-main);
+    background-color: #000;
+    background-image: url("assets/bg-grid.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
     color: white;
-    letter-spacing: 1px
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 247, 255, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
 }
 
 .panel::before {
@@ -36,9 +132,13 @@ body {
     margin: auto;
     padding: 80px 10%;
     border: 1px solid var(--border-color);
-    background: var(--panel-bg);
+    background: rgba(13, 13, 13, 0.8);
+    backdrop-filter: blur(10px);
     box-shadow: 0 0 20px rgba(0, 247, 255, 0.05);
     position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.8s ease-out forwards;
 }
 
 .panel:nth-child(1) { animation-delay: 0.2s; }
@@ -64,6 +164,32 @@ h1, h2 {
     padding: 15px;
     border: 1px solid var(--border-color);
     color: var(--text-dim);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.metrics div:hover {
+    border-color: var(--neon);
+    color: white;
+    box-shadow: 0 0 15px rgba(0, 247, 255, 0.2);
+    transform: translateX(5px);
+}
+
+.metrics div::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 0;
+    background: var(--neon);
+    transition: height 0.3s ease;
+    box-shadow: 0 0 10px var(--neon);
+}
+
+.metrics div:hover::after {
+    height: 80%;
 }
 
 .skill {
@@ -80,19 +206,256 @@ h1, h2 {
     padding: 30px;
     background: #111;
     border: 1px solid var(--border-color);
-    transition: 0.3s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 247, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.card:hover::before {
+    left: 100%;
 }
 
 .card:hover {
     border-color: var(--neon);
+    box-shadow: 0 0 20px rgba(0, 247, 255, 0.4), inset 0 0 20px rgba(0, 247, 255, 0.05);
+    transform: translateY(-8px) scale(1.02);
+}
+
+.card h3 {
+    color: var(--neon);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.card p {
+    color: var(--text-dim);
+    margin-bottom: 15px;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    background: rgba(0, 247, 255, 0.1);
+    border: 1px solid var(--neon);
+    border-radius: 3px;
+    color: var(--neon);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.internship-card {
+    background: #111;
+    border: 2px solid var(--neon);
+    padding: 30px;
+    box-shadow: 0 0 30px rgba(0, 247, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.internship-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--neon);
     box-shadow: 0 0 15px var(--neon);
-    transform: translateY(-6px);
+}
+
+.internship-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.internship-header h3 {
+    color: var(--neon);
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px var(--neon);
+    margin: 0;
+}
+
+.internship-date {
+    color: var(--text-dim);
+    font-size: 1rem;
+    padding: 5px 15px;
+    background: rgba(0, 247, 255, 0.1);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+}
+
+.internship-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.achievement {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    transition: all 0.3s;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.achievement:hover {
+    background: rgba(0, 247, 255, 0.05);
+    transform: translateX(5px);
+}
+
+.achievement .bullet {
+    color: var(--neon);
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.achievement p {
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.tech-stack {
+    margin-top: 15px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.tech-label {
+    color: var(--neon);
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.tech-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    background: rgba(0, 247, 255, 0.05);
+    border: 1px solid var(--neon);
+    border-radius: 3px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    transition: all 0.3s;
+}
+
+.tech-badge:hover {
+    background: rgba(0, 247, 255, 0.15);
+    color: var(--neon);
+    box-shadow: 0 0 10px rgba(0, 247, 255, 0.3);
+}
+
+.skills-category {
+    margin-bottom: 40px;
+}
+
+.category-title {
+    color: var(--neon);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.category-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--neon);
+    box-shadow: 0 0 10px var(--neon);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.skill-compact {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.skill-compact span {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+
+.bar-compact {
+    height: 6px;
+    background: #111;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.bar-compact .fill {
+    height: 100%;
+    background: var(--neon);
+    box-shadow: 0 0 10px var(--neon);
+    transition: width 0.3s ease;
+    animation: fillBar 1.5s ease-out;
+}
+
+@keyframes fillBar {
+    from {
+        width: 0 !important;
+    }
+}
+
+.skill-compact:hover span {
+    color: var(--neon);
+}
+
+.skill-compact:hover .bar-compact {
+    border-color: var(--neon);
+}
+
+.skill-compact:hover .fill {
+    box-shadow: 0 0 15px var(--neon);
 }
 
 .skill span {
-    display: block;
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 6px;
     color: var(--text-dim);
+}
+
+.skill-percent {
+    color: var(--neon);
+    font-weight: bold;
+}
+
+.skill:hover .bar::after {
+    box-shadow: 0 0 20px var(--neon);
 }
 
 .bar {
@@ -111,13 +474,34 @@ h1, h2 {
     top: 0;
     background: var(--neon);
     box-shadow: 0 0 10px var(--neon);
-    animation: load 2s ease-out forwards;
-    width: 0;
+    transition: width 0.3s ease, box-shadow 0.3s ease;
 }
 
-.html::after {width: 90%;}
-.css::after {width: 85%;}
-.problem::after {width: 95%;}
+.html::after { animation: loadHTML 2s ease-out forwards; }
+.css::after { animation: loadCSS 2s ease-out forwards; }
+.problem::after { animation: loadProblem 2s ease-out forwards; }
+
+@keyframes loadHTML {
+    from { width: 0; }
+    to { width: 90%; }
+}
+
+@keyframes loadCSS {
+    from { width: 0; }
+    to { width: 85%; }
+}
+
+@keyframes loadProblem {
+    from { width: 0; }
+    to { width: 95%; }
+}
+
+.javascript::after { animation: loadJavaScript 2s ease-out forwards; }
+
+@keyframes loadJavaScript {
+    from { width: 0; }
+    to { width: 75%; }
+}
 
 .boot {
     display: flex;
@@ -125,6 +509,39 @@ h1, h2 {
     justify-content: center;
     text-align: center;
     align-items: center;
+}
+
+.boot-icons {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+    font-size: 2.5rem;
+}
+
+.boot-icons .icon {
+    animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px var(--neon));
+}
+
+.boot-icons .icon:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.boot-icons .icon:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.boot-icons .icon:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
 }
 
 .status {
@@ -140,11 +557,30 @@ h1, h2 {
 .contact p {
     margin: 8px 0;
     color: var(--text-dim);
+    transition: color 0.3s;
+}
+
+.contact p:hover {
+    color: var(--neon);
 }
 
 .contact p::before {
     content: "> ";
     color: var(--neon);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.terminal-cursor {
+    display: inline-block;
+    color: var(--neon);
+    animation: blink 0.7s infinite;
+    margin-top: 20px;
+    font-size: 1.5rem;
 }
 
 .typing {
@@ -189,4 +625,109 @@ h1, h2 {
     .panel{
         padding: 60px 6%;
     }
+    .nav {
+        padding: 15px 5%;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .nav-links {
+        gap: 15px;
+        font-size: 0.9rem;
+    }
+    .boot-icons {
+        font-size: 2rem;
+        gap: 20px;
+    }
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    .internship-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .internship-card {
+        padding: 20px;
+    }
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.02) 0px,
+        rgba(255,255,255,0.02) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 247, 255, 0.1);
+    border: 2px solid var(--neon);
+    color: var(--neon);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    transition: all 0.3s;
+    box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
+    z-index: 999;
+    animation: fadeInButton 1s ease-out 2s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInButton {
+    to {
+        opacity: 1;
+    }
+}
+
+.back-to-top:hover {
+    background: rgba(0, 247, 255, 0.2);
+    box-shadow: 0 0 30px rgba(0, 247, 255, 0.6);
+    transform: translateY(-5px) rotate(360deg);
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 0 0 8px var(--neon);
+    }
+    20% {
+        text-shadow: 2px 0 8px var(--neon), -2px 0 8px #ff00ff;
+    }
+    40% {
+        text-shadow: -2px 0 8px var(--neon), 2px 0 8px #ff00ff;
+    }
+    60% {
+        text-shadow: 2px 0 8px var(--neon), -2px 0 8px #00ff00;
+    }
+    80% {
+        text-shadow: -2px 0 8px var(--neon), 2px 0 8px #ff00ff;
+    }
+    100% {
+        text-shadow: 0 0 8px var(--neon);
+    }
+}
+
+h1:hover {
+    animation: glitch 0.5s ease infinite;
 }

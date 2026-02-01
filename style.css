@@ -12,10 +12,23 @@
     box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--neon);
+    box-shadow: 0 0 10px var(--neon);
+}
+
 body {
     font-family: "Courier New", monospace;
     background-color: #000;
-    background-image: url("./assets/bg-grid.jpg");
+    background-image: url("bg-grid.jpg");
     background-size: cover;
     background-attachment: fixed;
     color: white;

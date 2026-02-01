@@ -1,3 +1,11 @@
+:root {
+    --bg-main: #050505;
+    --panel-bg: #0d0d0d;
+    --border-color: #1f1f1f;
+    --neon: #00f7ff;
+    --text-dim: #9aa0a6;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,15 +13,29 @@
 }
 
 body {
-    font-family: monospace;
-    background-color: #0a0a0a;
-    color: #e0e0e0;
+    font-family: "Courier New", monospace;
+    background-color: var(--bg-main);
+    color: white;
+    letter-spacing: 1px
+}
+
+.panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: var(--neon);
+    box-shadow: 0 0 10px var(--neon);
 }
 
 .panel {
     min-height: 100vh;
-    padding: 60px 10%;
-    border-bottom: 1px solid #222;
+    padding: 80px 10%;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--panel-bg);
+    position: relative;
 }
 
 h1, h2 {

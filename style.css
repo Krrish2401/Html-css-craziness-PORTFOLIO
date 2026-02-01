@@ -14,9 +14,11 @@
 
 body {
     font-family: "Courier New", monospace;
-    background-color: var(--bg-main);
+    background-color: #000;
+    background-image: url("./assets/bg-grid.jpg");
+    background-size: cover;
+    background-attachment: fixed;
     color: white;
-    letter-spacing: 1px
 }
 
 .panel::before {
@@ -93,6 +95,10 @@ h1, h2 {
     display: block;
     margin-bottom: 6px;
     color: var(--text-dim);
+}
+
+.skill:hover .bar::after {
+    box-shadow: 0 0 20px var(--neon);
 }
 
 .bar {
@@ -189,4 +195,21 @@ h1, h2 {
     .panel{
         padding: 60px 6%;
     }
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.02) 0px,
+        rgba(255,255,255,0.02) 1px,
+        transparent 2px,
+        transparent 4px
+    );
 }

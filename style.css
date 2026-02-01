@@ -123,3 +123,13 @@ h1, h2 {
     content: "> ";
     color: var(--neon);
 }
+
+.contact p {
+    margin: 8px 0;
+    color: var(--text-dim);
+}
+
+.contact p::before {
+    content: "> ";
+    color: var(--neon);
+}

@@ -61,11 +61,6 @@ h1, h2 {
     margin: 15px 0;
 }
 
-.bar {
-    height: 8px;
-    background: #222;
-}
-
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -85,3 +80,30 @@ h1, h2 {
     transform: translateY(-6px);
 }
 
+.skill span {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--text-dim);
+}
+
+.bar {
+    height: 8px;
+    background: #111;
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.bar::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: var(--neon);
+    box-shadow: 0 0 10px var(--neon);
+}
+
+.html::after {width: 90%;}
+.css::after {width: 85%;}
+.problem::after {width: 95%;}

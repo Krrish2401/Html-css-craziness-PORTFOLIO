@@ -554,6 +554,204 @@ h1, h2 {
     color: var(--neon);
 }
 
+.contact-intro {
+    margin: 8px 0 30px 0;
+    color: var(--text-dim);
+}
+
+.contact-intro::before {
+    content: "> ";
+    color: var(--neon);
+    animation: pulse 2s infinite;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 15px;
+    background: #111;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s;
+}
+
+.info-item:hover {
+    border-color: var(--neon);
+    box-shadow: 0 0 15px rgba(0, 247, 255, 0.2);
+}
+
+.info-label {
+    color: var(--neon);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.info-value {
+    color: var(--text-dim);
+    font-size: 1rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group input,
+.form-group textarea {
+    background: #111;
+    border: 1px solid var(--border-color);
+    color: white;
+    padding: 12px 15px;
+    font-family: "Courier New", monospace;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--neon);
+    box-shadow: 0 0 15px rgba(0, 247, 255, 0.2);
+}
+
+.form-group input:invalid:not(:placeholder-shown),
+.form-group textarea:invalid:not(:placeholder-shown) {
+    border-color: #ff4444;
+}
+
+.form-group input:valid:not(:placeholder-shown),
+.form-group textarea:valid:not(:placeholder-shown) {
+    border-color: #00ff00;
+}
+
+.form-group input:placeholder-shown,
+.form-group textarea:placeholder-shown {
+    border-color: var(--border-color);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.error-message {
+    color: #ff4444;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: none;
+}
+
+.form-group.error input,
+.form-group.error textarea {
+    border-color: #ff4444;
+}
+
+.form-group.error .error-message {
+    display: block;
+    animation: shake 0.3s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.submit-btn {
+    background: rgba(0, 247, 255, 0.1);
+    border: 2px solid var(--neon);
+    color: var(--neon);
+    padding: 12px 30px;
+    font-family: "Courier New", monospace;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.submit-btn:hover {
+    background: rgba(0, 247, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 247, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.footer {
+    background: rgba(5, 5, 5, 0.95);
+    border-top: 2px solid var(--neon);
+    padding: 30px 10%;
+    margin-top: 0;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--neon);
+    border-radius: 50%;
+    background: rgba(0, 247, 255, 0.05);
+    color: var(--neon);
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    background: rgba(0, 247, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 247, 255, 0.4);
+    transform: translateY(-5px) rotate(360deg);
+}
+
+.social-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-text {
+    color: var(--text-dim);
+    text-align: center;
+    margin: 0;
+}
+
 .contact p {
     margin: 8px 0;
     color: var(--text-dim);
@@ -653,6 +851,13 @@ h1, h2 {
     }
     .internship-card {
         padding: 20px;
+    }
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .footer {
+        padding: 20px 5%;
     }
 }
 

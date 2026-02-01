@@ -16,7 +16,6 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Navigation */
 .nav {
     position: fixed;
     top: 0;
@@ -96,11 +95,10 @@ html {
 body {
     font-family: "Courier New", monospace;
     background-color: #000;
-    background-image: 
-        linear-gradient(rgba(0, 247, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 247, 255, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
+    background-image: url("assets/bg-grid.jpg");
+    background-size: cover;
     background-attachment: fixed;
+    background-position: center;
     color: white;
     position: relative;
 }
@@ -255,6 +253,193 @@ h1, h2 {
     color: var(--neon);
     font-size: 0.8rem;
     text-transform: uppercase;
+}
+
+.internship-card {
+    background: #111;
+    border: 2px solid var(--neon);
+    padding: 30px;
+    box-shadow: 0 0 30px rgba(0, 247, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.internship-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--neon);
+    box-shadow: 0 0 15px var(--neon);
+}
+
+.internship-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.internship-header h3 {
+    color: var(--neon);
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px var(--neon);
+    margin: 0;
+}
+
+.internship-date {
+    color: var(--text-dim);
+    font-size: 1rem;
+    padding: 5px 15px;
+    background: rgba(0, 247, 255, 0.1);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+}
+
+.internship-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.achievement {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    transition: all 0.3s;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.achievement:hover {
+    background: rgba(0, 247, 255, 0.05);
+    transform: translateX(5px);
+}
+
+.achievement .bullet {
+    color: var(--neon);
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.achievement p {
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.tech-stack {
+    margin-top: 15px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.tech-label {
+    color: var(--neon);
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.tech-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    background: rgba(0, 247, 255, 0.05);
+    border: 1px solid var(--neon);
+    border-radius: 3px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    transition: all 0.3s;
+}
+
+.tech-badge:hover {
+    background: rgba(0, 247, 255, 0.15);
+    color: var(--neon);
+    box-shadow: 0 0 10px rgba(0, 247, 255, 0.3);
+}
+
+.skills-category {
+    margin-bottom: 40px;
+}
+
+.category-title {
+    color: var(--neon);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.category-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--neon);
+    box-shadow: 0 0 10px var(--neon);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.skill-compact {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.skill-compact span {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+
+.bar-compact {
+    height: 6px;
+    background: #111;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.bar-compact .fill {
+    height: 100%;
+    background: var(--neon);
+    box-shadow: 0 0 10px var(--neon);
+    transition: width 0.3s ease;
+    animation: fillBar 1.5s ease-out;
+}
+
+@keyframes fillBar {
+    from {
+        width: 0 !important;
+    }
+}
+
+.skill-compact:hover span {
+    color: var(--neon);
+}
+
+.skill-compact:hover .bar-compact {
+    border-color: var(--neon);
+}
+
+.skill-compact:hover .fill {
+    box-shadow: 0 0 15px var(--neon);
 }
 
 .skill span {
@@ -459,6 +644,16 @@ h1, h2 {
         width: 45px;
         height: 45px;
     }
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    .internship-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .internship-card {
+        padding: 20px;
+    }
 }
 
 body::after {
@@ -478,7 +673,6 @@ body::after {
     );
 }
 
-/* Back to Top Button */
 .back-to-top {
     position: fixed;
     bottom: 30px;
@@ -513,7 +707,6 @@ body::after {
     transform: translateY(-5px) rotate(360deg);
 }
 
-/* Glitch effect for title */
 @keyframes glitch {
     0% {
         text-shadow: 0 0 8px var(--neon);

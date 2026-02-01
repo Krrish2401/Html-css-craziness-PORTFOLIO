@@ -107,3 +107,19 @@ h1, h2 {
 .html::after {width: 90%;}
 .css::after {width: 85%;}
 .problem::after {width: 95%;}
+
+.boot {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.status {
+    color: var(--text-dim);
+    margin-top: 10px;
+}
+
+.status::before {
+    content: "> ";
+    color: var(--neon);
+}
